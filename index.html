@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YUUYEN Residences</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-main">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brandLink" href="index.html" aria-label="YUUYEN Residences">
+        <div class="brand">
+          <div class="brand__title">YUUYEN</div>
+          <div class="brand__sub">RESIDENCES</div>
+        </div>
+      </a>
+
+     
+  </header>
+
+  <!-- Hero -->
+  <main class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <section class="container hero__content">
+      <h1 class="hero__headline">“ Your Sanctuary of Peace and Safety ”</h1>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards" id="cards" aria-label="Room type cards">
+      <div class="container cards__grid">
+        <article class="card reveal" data-room="studio" tabindex="0" role="button" aria-label="Open Studio">
+          <div class="card__img" style="--img:url('images/studio-1.webp')"></div>
+          <div class="card__meta">
+            <div>
+              <div class="card__metaTitle">Studio</div>
+              <div class="card__metaSub">Compact • Cozy • Functional</div>
+            </div>
+        </article>
+
+        <article class="card reveal" data-room="onebed" tabindex="0" role="button" aria-label="Open 1 Bedroom">
+          <div class="card__img" style="--img:url('images/1bed-1.webp')"></div>
+          <div class="card__meta">
+            <div>
+              <div class="card__metaTitle">1 Bedroom</div>
+              <div class="card__metaSub">Separate living • Balanced space</div>
+            </div>
+        </article>
+
+        <article class="card reveal" data-room="twobed" tabindex="0" role="button" aria-label="Open 2 Bedroom">
+          <div class="card__img" style="--img:url('images/2bed-1.webp')"></div>
+          <div class="card__meta">
+            <div>
+              <div class="card__metaTitle">2 Bedroom</div>
+              <div class="card__metaSub">Family ready • Spacious</div>
+            </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <span>© YUUYEN Residences</span>
+    </footer>
+  </main>
+  
+  <script src="guard.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

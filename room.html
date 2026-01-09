@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/logoyy.png" type="image/png">
+  <title>YUUYEN Residences • Room</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-room">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brandLink" href="index.html" aria-label="Back to home">
+        <div class="brand">
+          <div class="brand__title">YUUYEN</div>
+          <div class="brand__sub">RESIDENCES</div>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Room types">
+        <a class="nav__btnLink" href="room.html?type=studio" data-link="studio">Studio</a>
+        <a class="nav__btnLink" href="room.html?type=onebed" data-link="onebed">1 Bedroom</a>
+        <a class="nav__btnLink" href="room.html?type=twobed" data-link="twobed">2 Bedroom</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="hero hero--room">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <section class="container roomPage">
+      <div class="roomPage__head">
+   <!-- <a class="backLink" href="index.html">← Back</a>-->
+        <h1 class="roomPage__title" id="roomTitle">Room</h1>
+        <p class="roomPage__subtitle" id="roomSubtitle">All photos</p>
+      </div>
+
+      <section class="gallery" aria-label="Room gallery">
+        <div class="gallery__top">
+          <div class="gallery__controls">
+            <button class="iconBtn" id="prevBtn" type="button" aria-label="Previous">‹</button>
+            <button class="iconBtn" id="nextBtn" type="button" aria-label="Next">›</button>
+          </div>
+        </div>
+
+        <div class="gallery__main">
+          <div class="gallery__shine" aria-hidden="true"></div>
+          <img id="mainImg" alt="Room photo" />
+          <div class="gallery__counter" id="counter">1 / 1</div>
+        </div>
+
+        <div class="gallery__thumbs" id="thumbs"></div>
+      </section>
+    </section>
+
+<!-- FULLSCREEN LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox__backdrop" data-lb-close></div>
+
+  <div class="lightbox__panel" role="dialog" aria-modal="true" aria-label="Fullscreen image viewer">
+    <button class="lightbox__close" type="button" aria-label="Close" data-lb-close>✕</button>
+
+    <div class="lightbox__controls">
+      <button class="lightbox__btn" id="lbPrev" type="button" aria-label="Previous">‹</button>
+      <button class="lightbox__btn" id="lbNext" type="button" aria-label="Next">›</button>
+    </div>
+
+    <div class="lightbox__media" id="lbMedia">
+      <img id="lbImg" alt="Fullscreen room photo" />
+      <div class="lightbox__counter" id="lbCounter">1 / 1</div>
+    </div>
+  </div>
+</div>
+
+    <footer class="footer footer--room">
+      <div class="container footer__inner">
+        <span>© YUUYEN Residences</span>
+    </footer>
+  </main>
+
+<div class="wm-layer"></div>
+<div class="wm-text">YUUYEN RESIDENCES • DO NOT DISTRIBUTE</div>
+
+  <script src="guard.js"></script>
+  <script src="room.js"></script>
+</body>
+</html>

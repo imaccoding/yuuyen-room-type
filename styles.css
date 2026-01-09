@@ -1,0 +1,836 @@
+:root{
+  --olive:#4f5b3a;
+  --olive2:#3f4a2d;
+  --text:#f3f4f2;
+  --muted:rgba(243,244,242,.72);
+  --glass:rgba(255,255,255,.12);
+  --glass2:rgba(255,255,255,.16);
+  --stroke:rgba(255,255,255,.18);
+  --shadow: 0 18px 55px rgba(0,0,0,.28);
+  --radius:22px;
+  --radiusXL:28px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:#0b0f0b;
+  color:var(--text);
+}
+
+.container{
+  width:min(1120px, 92vw);
+  margin-inline:auto;
+}
+
+/* Topbar */
+.topbar{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:50;
+  background: linear-gradient(180deg, rgba(79,91,58,.98), rgba(79,91,58,.92));
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.topbar__inner{
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.brand{line-height:1; text-align:center}
+.brand__title{
+  font-weight:700;
+  letter-spacing:.34em;
+  font-size:20px;
+}
+.brand__sub{
+  margin-top:6px;
+  font-weight:600;
+  letter-spacing:.34em;
+  opacity:.95;
+  font-size:12px;
+}
+.brandLink{color:inherit; text-decoration:none}
+
+/* Nav buttons */
+.nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+
+.nav__btn,
+.nav__btnLink{
+  border:1px solid rgba(255,255,255,.28);
+  color:rgba(255,255,255,.92);
+  background: rgba(0,0,0,.12);
+  border-radius:999px;
+  padding:10px 14px;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.nav__btn:hover,
+.nav__btnLink:hover{transform: translateY(-1px); background: rgba(0,0,0,.20)}
+.nav__btn.is-active,
+.nav__btnLink.is-active{
+  background: rgba(255,255,255,.16);
+  border-color: rgba(255,255,255,.45);
+}
+
+/* Hero */
+.hero{
+  position:relative;
+  min-height:100vh;
+  padding-top:78px;
+  overflow:hidden;
+}
+.hero--room{min-height:100vh}
+
+.hero__bg{
+  position:absolute; inset:0;
+  background-image:url("images/hero.webp");
+  background-size:cover;
+  background-position:center;
+  transform: translateZ(0) scale(1.04);
+  will-change: transform;
+}
+.hero__overlay{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(70% 60% at 50% 38%, rgba(0,0,0,.14), rgba(0,0,0,.58)),
+    linear-gradient(180deg, rgba(12,16,12,.18), rgba(12,16,12,.92));
+}
+
+/* Hero content */
+.hero__content{
+  position:relative;
+  padding:72px 0 24px;
+  text-align:center;
+}
+.hero__eyebrow{
+  margin:0 0 10px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.85);
+  font-weight:600;
+  font-size:12px;
+}
+.hero__headline{
+  margin:0;
+  font-family:"Playfair Display", serif;
+  font-weight:600;
+  font-size: clamp(28px, 4.2vw, 54px);
+  letter-spacing:.02em;
+  text-shadow: 0 16px 36px rgba(0,0,0,.35);
+}
+.hero__desc{
+  margin:14px auto 0;
+  max-width: 760px;
+  color: var(--muted);
+  line-height:1.7;
+}
+.hero__cta{margin-top:22px}
+
+/* Buttons */
+.pill{
+  border:1px solid rgba(255,255,255,.28);
+  color:#fff;
+  background: rgba(0,0,0,.18);
+  border-radius:999px;
+  padding:12px 16px;
+  font-weight:600;
+  cursor:pointer;
+  transition: transform .18s ease, background .18s ease;
+}
+.pill:hover{transform: translateY(-1px); background: rgba(0,0,0,.26)}
+
+/* Cards */
+.cards{
+  position:relative;
+  padding: 22px 0 70px;
+}
+.cards__grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:22px;
+  align-items:stretch;
+  margin-top: 80px;
+}
+
+.card{
+  position:relative;
+  background: rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.22);
+  border-radius: var(--radiusXL);
+  padding:14px;
+  box-shadow: 0 18px 45px rgba(0,0,0,.25);
+  cursor:pointer;
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+  outline:none;
+}
+.card:hover{
+  transform: translateY(-20px);
+  background: rgba(255,255,255,.20);
+  box-shadow: 0 26px 60px rgba(0,0,0,.32);
+}
+.card:focus-visible{
+  box-shadow: 0 0 0 4px rgba(255,255,255,.18), 0 26px 60px rgba(0,0,0,.32);
+}
+
+.card__badge{
+  position:absolute;
+  top:14px; left:50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,.92);
+  color:#1b1b1b;
+  border-radius:999px;
+  padding:10px 16px;
+  font-family:"Playfair Display", serif;
+  font-size:16px;
+  z-index:2;
+  box-shadow: 0 10px 24px rgba(0,0,0,.15);
+}
+.card__img{
+  height:240px;
+  border-radius: 22px;
+  background-image: var(--img);
+  background-size: cover;
+  background-position:center;
+  position:relative;
+  overflow:hidden;
+}
+.card__img::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.20));
+}
+.card__meta{
+  margin-top:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,.92);
+}
+.card__metaTitle{font-weight:700}
+.card__metaSub{opacity:.72; font-size:12px}
+.card__arrow{
+  width:34px; height:34px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.07);
+}
+
+/* Reveal animation */
+.reveal{opacity:0; transform: translateY(14px) scale(.985)}
+.reveal.is-in{
+  opacity:1;
+  transform: translateY(0) scale(1);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.9,.2,1);
+}
+
+/* Footer */
+.footer{
+  position:relative;
+  padding: 40px 0 80px;
+  color: rgba(255,255,255,.78);
+}
+.footer--room{padding-top: 26px}
+.footer__inner{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.footer__dot{opacity:.55}
+.footer__link{color: rgba(255,255,255,.86); text-decoration:none}
+.footer__link:hover{text-decoration:underline}
+
+/* ROOM PAGE */
+.roomPage{
+  position:relative;
+  padding: 64px 0 38px;
+}
+.roomPage__head{text-align:center; margin-bottom:18px}
+.backLink{
+  display:inline-block;
+  margin-bottom:10px;
+  color:rgba(255,255,255,.86);
+  text-decoration:none;
+  opacity:.85;
+}
+.backLink:hover{opacity:1; text-decoration:underline}
+.roomPage__title{
+  margin:0;
+  font-family:"Playfair Display", serif;
+  font-weight:600;
+  font-size: clamp(28px, 4.2vw, 48px);
+  text-shadow: 0 16px 36px rgba(0,0,0,.35);
+}
+.roomPage__subtitle{
+  margin:10px auto 0;
+  color: var(--muted);
+  line-height:1.6;
+}
+
+/* Gallery */
+.gallery{
+  margin-top:22px;
+  background: rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius: 22px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.gallery__top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding: 2px 2px 12px;
+}
+.gallery__hint{
+  font-size:12px;
+  color: rgba(255,255,255,.76);
+}
+.gallery__controls{display:flex; gap:10px}
+
+.iconBtn{
+  width:42px; height:42px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.08);
+  color:#fff;
+  cursor:pointer;
+  font-size:22px;
+  transition: transform .16s ease, background .16s ease;
+}
+.iconBtn:hover{transform: translateY(-1px); background: rgba(255,255,255,.12)}
+
+.gallery__main{
+  position:relative;
+  overflow:hidden;
+  border-radius: 18px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.12);
+}
+.gallery__shine{
+  position:absolute;
+  inset:-40% -10%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.16), transparent 55%);
+  opacity:.8;
+  pointer-events:none;
+  transform: rotate(12deg);
+}
+.gallery__main img{
+  width:100%;
+  height: min(58vh, 560px);
+  object-fit: cover;
+  display:block;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.gallery__counter{
+  position:absolute;
+  right:10px; bottom:10px;
+  padding:8px 10px;
+  border-radius: 999px;
+  background: rgba(0,0,0,.32);
+  border:1px solid rgba(255,255,255,.14);
+  font-size:12px;
+  color: rgba(255,255,255,.88);
+  backdrop-filter: blur(6px);
+}
+
+.gallery__thumbs{
+  margin-top:12px;
+  display:flex;
+  gap:10px;
+  overflow:auto;
+  padding-bottom:4px;
+}
+.gallery__thumbs img{
+  width:140px;
+  height:90px;
+  object-fit:cover;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  cursor:pointer;
+  opacity:.78;
+  transition: opacity .18s ease, transform .18s ease;
+}
+.gallery__thumbs img:hover{opacity:1; transform: translateY(-2px)}
+.gallery__thumbs img.is-active{opacity:1; outline:2px solid rgba(255,255,255,.35)}
+
+/* Responsive */
+@media (max-width: 920px){
+  .cards__grid{grid-template-columns: 1fr; gap:16px}
+  .card__img{height:220px}
+}
+/* Safe-area for iPhone notch */
+:root{
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ให้ topbar สูงขึ้นนิด + ปุ่มใหญ่ขึ้นบนมือถือ */
+@media (max-width: 600px){
+  .topbar{
+    padding-top: var(--safe-top);
+  }
+
+  .topbar__inner{
+    height: 92px;                 /* เดิม 78/86 */
+    align-items: flex-end;
+    padding-bottom: 10px;
+    gap: 10px;
+  }
+
+  .brand__title{ font-size: 18px; }
+  .brand__sub{ font-size: 11px; }
+
+  /* ทำเมนูเป็นแถบเลื่อนแนวนอน (ไม่ล้นจอ) */
+  .nav{
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar{ display:none; }
+
+  /* ปุ่มกดง่ายขึ้น */
+  .nav__btn,
+  .nav__btnLink{
+    padding: 10px 14px;
+    min-height: 44px;             /* touch target */
+    white-space: nowrap;
+  }
+
+  /* ตัวหนังสือ hero กระชับขึ้น */
+  .hero__content{
+    padding: 52px 0 14px;
+  }
+  .hero__headline{
+    font-size: clamp(26px, 7.2vw, 40px);
+  }
+  .hero__desc{
+    font-size: 14px;
+  }
+
+  /* ---------- หน้าแรก: Cards เป็น Swipe Carousel ---------- */
+  .cards{
+    padding: 18px 0 22px;
+  }
+
+  .cards__grid{
+    grid-template-columns: unset; /* ยกเลิก 3 คอลัมน์ */
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 85%;
+    gap: 14px;
+
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 0 4px 10px;
+  }
+  .cards__grid > .card{
+    scroll-snap-align: center;
+  }
+
+  .card{
+    padding: 12px;
+    border-radius: 22px;
+  }
+
+  .card__img{
+    height: 210px;                /* พอดีมือ */
+  }
+
+  .footer{
+    padding: 16px 0 calc(24px + var(--safe-bottom));
+  }
+
+  /* ---------- หน้า room: Gallery ให้ใช้งานง่าย ---------- */
+  .gallery{
+    padding: 14px;
+  }
+
+  .gallery__top{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .gallery__controls{
+    justify-content: center;
+  }
+
+  .iconBtn{
+    min-width: 52px;
+    min-height: 52px;
+    font-size: 24px;
+  }
+
+  .gallery__main img{
+    height: min(52vh, 420px);
+  }
+
+  /* thumbs เลื่อนง่าย + snap */
+  .gallery__thumbs{
+    scroll-snap-type: x mandatory;
+    padding-bottom: 6px;
+  }
+  .gallery__thumbs img{
+    width: 130px;
+    height: 86px;
+    scroll-snap-align: start;
+  }
+}
+
+/* กัน hover effect บนมือถือบางเครื่อง (ลดอาการกระตุก) */
+@media (hover: none){
+  .card:hover{ transform: none; }
+  .thumb:hover{ transform: none; }
+}
+
+/* =========================
+   FULLSCREEN LIGHTBOX
+   ========================= */
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:120;
+  display:none;
+}
+.lightbox.is-open{ display:block; }
+
+.lightbox__backdrop{
+  position:absolute; inset:0;
+  background: rgba(0,0,0,.70);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox__panel{
+  position:relative;
+  width:min(1100px, 96vw);
+  height:min(86vh, 840px);
+  margin: calc(84px + env(safe-area-inset-top, 0px)) auto 24px;
+  border-radius: 22px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(14,18,14,.55);
+  box-shadow: 0 24px 80px rgba(0,0,0,.45);
+  overflow:hidden;
+}
+
+.lightbox__close{
+  position:absolute;
+  top:12px; right:12px;
+  width:46px; height:46px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.10);
+  color:#fff;
+  cursor:pointer;
+  z-index:5;
+}
+
+.lightbox__controls{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 0 10px;
+  pointer-events:none; /* ให้คลิกได้เฉพาะปุ่ม */
+  z-index:4;
+}
+
+.lightbox__btn{
+  pointer-events:auto;
+  width:52px; height:52px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.10);
+  color:#fff;
+  cursor:pointer;
+  font-size:26px;
+  transition: transform .16s ease, background .16s ease;
+}
+.lightbox__btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.14); }
+
+.lightbox__media{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding: 14px;
+}
+
+.lightbox__media img{
+  width:100%;
+  height:100%;
+  object-fit: contain; /* เต็มจอแบบไม่ตัดภาพ */
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity .18s ease;
+}
+
+.lightbox__counter{
+  position:absolute;
+  right:16px; bottom:16px;
+  padding:8px 10px;
+  border-radius:999px;
+  background: rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.14);
+  font-size:12px;
+  color: rgba(255,255,255,.88);
+  backdrop-filter: blur(6px);
+}
+
+/* ทำให้ "คลิกที่รูปหลักเพื่อเปิดเต็มจอ" ดูชัดเจน */
+.gallery__main{
+  cursor: zoom-in;
+}
+.gallery__counter{
+  user-select:none;
+}
+
+/* Mobile: ให้ปุ่มใหญ่ขึ้น + panel สูงขึ้นนิด */
+@media (max-width: 600px){
+  .lightbox__panel{
+    width: 96vw;
+    height: 82vh;
+    margin: calc(92px + env(safe-area-inset-top, 0px)) auto 16px;
+    border-radius: 18px;
+  }
+  .lightbox__btn{ width:56px; height:56px; font-size:28px; }
+  .lightbox__close{ width:50px; height:50px; }
+}
+
+/* =========================
+   HEADER ALIGNMENT PATCH
+   ========================= */
+
+/* ตั้งค่าโครงให้จัดตำแหน่งได้ง่าย */
+.topbar__inner{
+  position: relative;              /* สำคัญ: เพื่อให้ center brand แบบ absolute ได้ */
+  padding-inline: 16px;            /* กันชิดขอบ */
+}
+
+/* ====== MAIN PAGE (PC): Brand กลางจอ, Nav ยังอยู่ขวาได้ ====== */
+.page-main .brandLink{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%); /* กลางทั้งแนวตั้ง-แนวนอน */
+  z-index: 2;
+}
+
+/* ป้องกัน brand ชน nav: ทำให้ nav ดันไปขวา */
+.page-main .nav{
+  margin-left: auto;
+}
+
+/* ====== MAIN PAGE (Mobile): Brand + Nav จัดกลางแบบเรียงสวย ====== */
+@media (max-width: 600px){
+  .page-main .topbar__inner{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;                 /* ให้สูงตามเนื้อหา */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 10px;
+  }
+
+  .page-main .brandLink{
+    position: static;             /* ยกเลิก absolute บนมือถือ */
+    transform: none;
+  }
+
+  .page-main .nav{
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;      /* ปุ่มอยู่กลาง */
+  }
+}
+
+/* ====== ROOM PAGE (PC + Mobile): Brand + Buttons อยู่ "กึ่งกลาง" ของแถบสีเขียว ====== */
+.page-room .topbar__inner{
+  justify-content: center;        /* จัดทั้งกลุ่มให้อยู่กลางแถบ */
+  gap: 22px;                      /* ระยะระหว่างโลโก้กับปุ่ม */
+}
+
+.page-room .brandLink{
+  position: static;               /* ให้เป็นสมาชิก flex ปกติ */
+  transform: none;
+}
+
+.page-room .nav{
+  margin-left: 0;                 /* ไม่ดันไปขวา */
+  justify-content: center;
+}
+
+/* มือถือ: ถ้าอยากให้โลโก้กับปุ่มอยู่บรรทัดเดียว (เหมือนในภาพ) */
+@media (max-width: 600px){
+  .page-room .topbar__inner{
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: 92px;                 /* ให้บาลานซ์กับแถบสีเขียว */
+    padding-bottom: 10px;
+  }
+
+  /* เมนู 3 ปุ่มบนมือถือให้เลื่อนได้ แต่ยัง "เริ่มจากกลาง" */
+  .page-room .nav{
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .page-room .nav::-webkit-scrollbar{ display:none; }
+}
+
+/* =========================
+   MOBILE FOOTER SPACING
+   ========================= */
+@media (max-width: 600px){
+  .footer{
+    margin-top: 180px;   /* 🔧 ปรับเลขนี้ได้ เช่น 60px / 80px */
+  }
+}
+
+/* =========================
+   ROOM NAV FIX (MOBILE)
+   Prevent buttons overlapping brand
+   ========================= */
+@media (max-width: 600px){
+  .page-room .topbar__inner{
+    flex-direction: column;       /* แยกเป็น 2 แถว */
+    align-items: center;
+    justify-content: center;
+    height: auto;                 /* สูงตามเนื้อหา */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 10px;
+  }
+
+  .page-room .brandLink{
+    position: static;
+    transform: none;
+  }
+
+  .page-room .nav{
+    width: 100%;
+    justify-content: center;
+    flex-wrap: nowrap;            /* ยังเป็นแถบเลื่อน */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .page-room .nav::-webkit-scrollbar{ display:none; }
+
+  .page-room .nav__btnLink{
+    white-space: nowrap;
+    min-height: 44px;             /* กดง่าย */
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 600px){
+  .page-room .hero--room{
+    padding-top: 120px; /* เดิม 78px หรือ 92px -> เพิ่มให้พอดีกับ topbar 2 แถว */
+  }
+}
+
+/* =========================
+   PC NAVBAR SPACING FIX
+   (ROOM PAGE ONLY)
+   ========================= */
+@media (min-width: 601px){
+  .page-room .topbar__inner{
+    gap: clamp(240px, 35vw, 500px);
+  }
+}
+
+/* Performance: reduce heavy blur on low-power devices */
+@media (max-width: 600px), (prefers-reduced-motion: reduce){
+  .topbar,
+  .gallery,
+  .card,
+  .lightbox__backdrop{
+    backdrop-filter: none !important;
+  }
+}
+
+@media (max-width: 600px){
+  .hero__bg{
+    transform: none !important;
+  }
+}
+
+/* ===== Anti-capture watermark layer ===== */
+.wm-layer{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90; /* ต่ำกว่า lightbox(120) แต่สูงกว่าเนื้อหา */
+  opacity: .18;
+  mix-blend-mode: overlay;
+  background-image:
+    repeating-linear-gradient(
+      -28deg,
+      rgba(255,255,255,.35) 0,
+      rgba(255,255,255,.35) 1px,
+      transparent 1px,
+      transparent 220px
+    );
+}
+
+.wm-text{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 91;
+  display: grid;
+  place-items: center;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  transform: rotate(-18deg);
+  font-size: clamp(18px, 2.6vw, 34px);
+  opacity: .22;
+}
+
+/* ทำให้รูป “ลากไป save” ยากขึ้นเล็กน้อย */
+img{
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+@media print{
+  body{ display:none !important; }
+}
+
+
