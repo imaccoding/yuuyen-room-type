@@ -842,9 +842,12 @@ img{
 }
 
 @media (max-width: 768px) {
-  .glass,
-  .topbar {
+  .hero__bg {
+    transform: none !important;
+  }
+  .hero__overlay {
     backdrop-filter: none !important;
   }
 }
+
 
