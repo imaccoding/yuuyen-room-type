@@ -842,6 +842,13 @@ img{
 }
 
 @media (max-width: 768px) {
+  .glass,
+  .topbar {
+    backdrop-filter: none !important;
+  }
+}
+
+@media (max-width: 768px) {
   .hero__bg {
     transform: none !important;
   }
@@ -849,5 +856,4 @@ img{
     backdrop-filter: none !important;
   }
 }
-
 
