@@ -841,3 +841,10 @@ img{
   }
 }
 
+@media (max-width: 768px) {
+  .glass,
+  .topbar {
+    backdrop-filter: none !important;
+  }
+}
+

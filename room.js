@@ -80,8 +80,6 @@ window.addEventListener("scroll", () => {
 
 onScrollParallax();
 
-
-
 // Elements
 const roomTitle = qs("#roomTitle");
 const roomSubtitle = qs("#roomSubtitle");
@@ -223,14 +221,6 @@ if(mainWrap){
     }
   }, { passive: true });
 }
-
-/* =========================================================
-   ✅ FULLSCREEN LIGHTBOX (ADD-ON)
-   - คลิก/แตะรูปหลักครั้งเดียว เปิดเต็มจอ
-   - มีปุ่ม Prev/Next + คีย์บอร์ด + Swipe
-   - ปิดด้วย ESC / คลิกพื้นหลัง / ปุ่ม ✕
-   IMPORTANT: ต้องมี Lightbox HTML ใน room.html (ตามที่ผมให้ไป)
-   ========================================================= */
 
 // Lightbox elements (อิงจาก HTML ที่ให้ไป)
 const lightbox = document.getElementById("lightbox");
@@ -400,4 +390,9 @@ if(lbMedia){
 
 document.addEventListener("visibilitychange", () => {
   document.documentElement.classList.toggle(blurClass, document.hidden);
+});
+
+window.addEventListener("load", () => {
+  initParallax();
+  initGallery();
 });
