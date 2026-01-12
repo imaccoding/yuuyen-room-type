@@ -100,16 +100,20 @@ if (roomSubtitle) roomSubtitle.textContent = data.subtitle;
 let idx = 0;
 
 // Preload images for smooth
-function preloadNearby(){
+function preloadNearby(data, idx){
   const nextIdx = (idx + 1) % data.images.length;
   const prevIdx = (idx - 1 + data.images.length) % data.images.length;
-
   [data.images[nextIdx], data.images[prevIdx]].forEach(src => {
     const im = new Image();
     im.src = src;
   });
 }
 
+mainImg.onload = () => {
+  mainImg.style.opacity = 1;
+  counter.textContent = `${idx + 1} / ${data.images.length}`;
+  preloadNearby(data, idx);
+};
 
 function setMainImage(){
   const src = data.images[idx];

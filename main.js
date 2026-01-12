@@ -13,23 +13,25 @@ function smoothScrollTo(id){
 const heroBg = document.querySelector(".hero__bg");
 let ticking = false;
 
-function onScrollParallax(){
-  if(!heroBg) return;
-  const y = window.scrollY;
+function onScrollParallax() {
+  if (!heroBg) return;
+  const y = window.scrollY || 0;
   heroBg.style.transform = `translate3d(0, ${y * 0.12}px, 0) scale(1.05)`;
   ticking = false;
 }
 
-window.addEventListener("scroll", () => {
-  if(!ticking){
-    window.requestAnimationFrame(onScrollParallax);
-    ticking = true;
-  }
-}, { passive:true });
+window.addEventListener(
+  "scroll",
+  () => {
+    if (!ticking) {
+      requestAnimationFrame(onScrollParallax);
+      ticking = true;
+    }
+  },
+  { passive: true }
+);
 
-// run once
 onScrollParallax();
-
 
 // Reveal on scroll
 const io = new IntersectionObserver((entries) => {

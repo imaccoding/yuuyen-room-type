@@ -833,4 +833,10 @@ img{
   body{ display:none !important; }
 }
 
+.hero__bg { will-change: transform; }
+@media (prefers-reduced-motion: reduce) {
+  .topbar, .card, .gallery, .lightbox__backdrop {
+    backdrop-filter: none !important;
+  }
+}
 
