@@ -91,17 +91,6 @@ setTimeout(() => {
   });
 });
 
-// ===== Blur content when tab is not active (soft protection) =====
-const blurClass = "soft-blur";
-const style = document.createElement("style");
-style.textContent = `
-  .soft-blur main, .soft-blur .hero, .soft-blur .gallery, .soft-blur .cards{
-    filter: blur(14px);
-    transition: filter .18s ease;
-  }
-`;
-document.head.appendChild(style);
-
 document.addEventListener("visibilitychange", () => {
   document.documentElement.classList.toggle(blurClass, document.hidden);
 });
