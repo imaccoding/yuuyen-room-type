@@ -21,8 +21,7 @@ function onScrollParallax() {
 }
 
 window.addEventListener(
-  "scroll",
-  () => {
+  "scroll", () => {
     if (!ticking) {
       requestAnimationFrame(onScrollParallax);
       ticking = true;
