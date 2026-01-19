@@ -8,16 +8,13 @@ function smoothScrollTo(id){
   window.scrollTo({ top: y, behavior: "smooth" });
 }
 
-// Parallax background
-// Parallax background (smooth)
 const heroBg = document.querySelector(".hero__bg");
 let ticking = false;
 
 function onScrollParallax() {
   if (!heroBg) return;
   const y = window.scrollY || 0;
-  heroBg.style.transform =
-    `translate3d(0, ${y * 0.12}px, 0) scale(1.05)`;
+  heroBg.style.transform = `translate3d(0, ${y * 0.12}px, 0) scale(1.05)`;
   ticking = false;
 }
 
@@ -30,7 +27,10 @@ window.addEventListener("scroll", () => {
 
 onScrollParallax();
 
-// Reveal on scroll
+function initParallax(){
+  onScrollParallax();
+}
+
 const io = new IntersectionObserver((entries) => {
   for (const e of entries){
     if(e.isIntersecting){
@@ -42,7 +42,6 @@ const io = new IntersectionObserver((entries) => {
 
 qsa(".reveal").forEach(el => io.observe(el));
 
-// Nav active
 const navBtns = qsa(".nav__btn");
 function setActive(target){
   navBtns.forEach(b => b.classList.toggle("is-active", b.dataset.target === target));
@@ -52,6 +51,7 @@ navBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     setActive(btn.dataset.target);
     smoothScrollTo("cards");
+
     // เลือกแล้วให้ highlight การ์ดด้วย (นิดหน่อย)
     const room = btn.dataset.target;
     const card = qs(`.card[data-room="${room}"]`);
@@ -65,20 +65,19 @@ navBtns.forEach(btn => {
   });
 });
 
-// CTA
+
 qsa("[data-scroll]").forEach(btn => {
   btn.addEventListener("click", () => smoothScrollTo(btn.dataset.scroll));
 });
 
-// Card click -> go to room page
 qsa(".card").forEach(card => {
   const room = card.dataset.room;
 
   const go = () => {
     document.body.style.opacity = "0.92";
-setTimeout(() => {
-  window.location.href = `room.html?type=${encodeURIComponent(room)}`;
-}, 90);
+    setTimeout(() => {
+      window.location.href = `room.html?type=${encodeURIComponent(room)}`;
+    }, 90);
   };
 
   card.addEventListener("click", go);
@@ -90,11 +89,13 @@ setTimeout(() => {
   });
 });
 
+const blurClass = "is-blurred";
+
 document.addEventListener("visibilitychange", () => {
   document.documentElement.classList.toggle(blurClass, document.hidden);
 });
 
 window.addEventListener("load", () => {
-  initParallax();
-  initGallery();
+  if (typeof initParallax === "function") initParallax();
+  if (typeof initGallery === "function") initGallery();
 });
