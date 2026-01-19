@@ -93,3 +93,8 @@ setTimeout(() => {
 document.addEventListener("visibilitychange", () => {
   document.documentElement.classList.toggle(blurClass, document.hidden);
 });
+
+window.addEventListener("load", () => {
+  initParallax();
+  initGallery();
+});
