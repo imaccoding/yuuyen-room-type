@@ -396,3 +396,11 @@ window.addEventListener("load", () => {
   initParallax();
   initGallery();
 });
+
+function initParallax(){
+  const bg = document.querySelector(".hero__bg");
+  if(!bg) return;
+  if(window.innerWidth <= 768){
+    bg.style.transform = "none";
+  }
+}
