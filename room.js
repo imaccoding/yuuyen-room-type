@@ -32,6 +32,7 @@ const GALLERIES = {
       "images/1bed-5.webp",
       "images/1bed-6.webp",
       "images/1bed-7.webp",
+      "images/1bed-8.webp",
     ]
   },
   twobed: {

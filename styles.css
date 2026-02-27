@@ -511,6 +511,10 @@ body{
 /* =========================
    FULLSCREEN LIGHTBOX
    ========================= */
+/* =========================
+   FULLSCREEN LIGHTBOX (FULL REPLACEMENT)
+   ========================= */
+
 .lightbox{
   position:fixed;
   inset:0;
@@ -519,17 +523,19 @@ body{
 }
 .lightbox.is-open{ display:block; }
 
+/* Backdrop */
 .lightbox__backdrop{
   position:absolute; inset:0;
   background: rgba(0,0,0,.70);
   backdrop-filter: blur(8px);
 }
 
+/* Panel */
 .lightbox__panel{
   position:relative;
   width:min(1100px, 96vw);
-  height:min(86vh, 840px);
-  margin: calc(84px + env(safe-area-inset-top, 0px)) auto 24px;
+  height:min(92vh, 900px);
+  margin: 0;                 /* ✅ ไม่ใช้ margin-top แบบเดิม */
   border-radius: 22px;
   border:1px solid rgba(255,255,255,.12);
   background: rgba(14,18,14,.55);
@@ -537,6 +543,15 @@ body{
   overflow:hidden;
 }
 
+/* ✅ Center panel when open (PC + Mobile) */
+.lightbox.is-open{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: calc(72px + env(safe-area-inset-top, 0px)) 16px 20px;
+}
+
+/* Close button */
 .lightbox__close{
   position:absolute;
   top:12px; right:12px;
@@ -549,6 +564,7 @@ body{
   z-index:5;
 }
 
+/* Controls */
 .lightbox__controls{
   position:absolute;
   inset:0;
@@ -571,8 +587,12 @@ body{
   font-size:26px;
   transition: transform .16s ease, background .16s ease;
 }
-.lightbox__btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.14); }
+.lightbox__btn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.14);
+}
 
+/* Media wrapper */
 .lightbox__media{
   position:absolute;
   inset:0;
@@ -581,15 +601,19 @@ body{
   padding: 14px;
 }
 
+/* ✅ สำคัญ: ทำให้ภาพแนวตั้งบน PC “เต็ม” มากขึ้น */
 .lightbox__media img{
-  width:100%;
-  height:100%;
-  object-fit: contain; /* เต็มจอแบบไม่ตัดภาพ */
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit: contain !important; /* กันโดน CSS อื่นทับ */
   border-radius: 16px;
   opacity: 0;
   transition: opacity .18s ease;
 }
 
+/* Counter */
 .lightbox__counter{
   position:absolute;
   right:16px; bottom:16px;
@@ -600,6 +624,7 @@ body{
   font-size:12px;
   color: rgba(255,255,255,.88);
   backdrop-filter: blur(6px);
+  z-index:6;
 }
 
 /* ทำให้ "คลิกที่รูปหลักเพื่อเปิดเต็มจอ" ดูชัดเจน */
@@ -610,12 +635,14 @@ body{
   user-select:none;
 }
 
-/* Mobile: ให้ปุ่มใหญ่ขึ้น + panel สูงขึ้นนิด */
+/* Mobile: ให้ปุ่มใหญ่ขึ้น + panel สูงขึ้นนิด + padding ให้เข้ากับ safe-area */
 @media (max-width: 600px){
+  .lightbox.is-open{
+    padding: calc(92px + env(safe-area-inset-top, 0px)) 10px 14px;
+  }
   .lightbox__panel{
     width: 96vw;
-    height: 82vh;
-    margin: calc(92px + env(safe-area-inset-top, 0px)) auto 16px;
+    height: 86vh;
     border-radius: 18px;
   }
   .lightbox__btn{ width:56px; height:56px; font-size:28px; }
