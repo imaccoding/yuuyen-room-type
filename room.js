@@ -53,12 +53,8 @@ const GALLERIES = {
 // อ่าน type จาก URL
 const params = new URLSearchParams(location.search);
 const type = (params.get("type") || "studio").toLowerCase();
-const data = GALLERIES[type] || GALLERIES["studio"];
+const data = GALLERIES[type] || GALLERIES.studio;
 
-if(!data || !data.images){
-  console.warn("Gallery not found for type:", type);
-  return;
-}
 // Set active nav link
 qsa(".nav__btnLink").forEach(a => {
   a.classList.toggle("is-active", a.dataset.link === type);
